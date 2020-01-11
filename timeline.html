@@ -538,15 +538,15 @@
       }
     }, []);
     const scale = 5;
-    const divs = sorted.map((v, i) => $('<div/>', {
+    $(document).ready(() => {
+      const divs = sorted.map((v, i) => $('<div/>', {
         id: `c${i}`,
         "class": "composer",
         html: `<a href=${v.wiki} target=_blank>${v.surname} ${v.born}-${v.died}</a>`,
       }).css('top', `${v.line * 30}px`)
-      .css('width', `${(v.died - v.born) * scale}px`)
-      .css('left', `${(v.born - minDate) * scale}px`)
-    );
-    $(document).ready(() => {
+        .css('width', `${(v.died - v.born) * scale}px`)
+        .css('left', `${(v.born - minDate) * scale}px`)
+      );
       const timeline = $("#timeline");
       timeline.html(divs);
     });
